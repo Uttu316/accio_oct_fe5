@@ -1,33 +1,53 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-
+import AppHeader from "./components/header";
+import AppFooter from "./components/footer";
+import UserCard from "./components/userCard";
 function App() {
-  const [count, setCount] = useState(0);
+  const getName = () => {
+    let fname = "Utkarsh";
+
+    let lname = "Gupta";
+
+    let fullName = fname + " " + lname;
+    return fullName;
+  };
+
+  const getUser = () => {
+    return {
+      age: 20,
+      city: "Agra",
+    };
+  };
+
+  const isVisible = false;
+
+  const isEven = false;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Learning React with Accio</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <ul>
-          <li>Advanced JS</li>
-          <li>React JS</li>
-        </ul>
-      </div>
-      <p className="read-the-docs">Stay tune for fun learing with Utkarsh</p>
-    </>
+    <div className="learingPageContainer">
+      <AppHeader />
+      <h1 className="heading">Welcome to React</h1>
+      <UserCard />
+
+      {2 + 2}
+      {"ABC" + "ew2323" + 2323}
+      {getName()}
+      {isVisible && (
+        <div>
+          <p>Hello I am a Tag</p>
+        </div>
+      )}
+      <ul>{[<li>A</li>, <li>B</li>, <li>C</li>, <li>D</li>]}</ul>
+
+      {getUser().age >= 22 && (
+        <h3>
+          Age:{getUser().age}|City: {getUser().city}
+        </h3>
+      )}
+      <h4>{isEven ? "Number is even" : "Number is odd"}</h4>
+
+      <AppFooter />
+    </div>
   );
 }
 
