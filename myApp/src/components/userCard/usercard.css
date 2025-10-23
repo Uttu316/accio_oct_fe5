@@ -1,0 +1,23 @@
+.user_card {
+  background-color: rgb(244, 230, 204);
+  border-radius: 8px;
+  box-shadow: 4px 4px 4px #ccc;
+  padding: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 20px;
+  align-items: center;
+}
+
+.user_img {
+  margin-bottom: 12px;
+  height: 100px;
+  width: 100px;
+  background-color: #dbdbdb;
+  border-radius: 50%;
+}
+
+.user_content {
+  text-align: center;
+}

@@ -29,3 +29,7 @@
   color: rgb(11, 104, 104);
   font-weight: bold;
 }
+
+.text {
+  background-color: transparent;
+}

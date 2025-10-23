@@ -1,28 +1,24 @@
-import React from "react";
+import "./usercard.css";
 
-const UserCard = () => {
-  const user = {
-    fname: "Utarsh",
-    image: "https://avatar-placeholder.iran.liara.run/logo.png",
-    lname: "Gupta",
-    address: {
-      city: "Agra",
-      pincode: "323232",
-    },
-  };
+const UserCard = (props) => {
+  const { user, index } = props;
+
   return (
-    <React.Fragment>
-      <article>
-        <img src={user.image} height={100} width={100} />
-        <div>
-          <h4>{`${user.fname} ${user.lname}`}</h4>
-          <p>
-            {user.address.city} - {user.address.pincode}
-          </p>
-        </div>
-      </article>
-      <div>Hey</div>
-    </React.Fragment>
+    <article className="user_card">
+      <img
+        className="user_img"
+        src={`https://avatar.iran.liara.run/public/${index + 1}`}
+        height={100}
+        width={100}
+      />
+      <div className="user_content">
+        <h4>{`${user.fname} ${user.lname}`}</h4>
+        <p>Age: {user.age} </p>
+        <p>
+          Address: {user.address.city} - {user.address.pincode}
+        </p>
+      </div>
+    </article>
   );
 };
 
