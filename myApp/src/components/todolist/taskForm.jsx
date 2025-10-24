@@ -1,6 +1,12 @@
 import styles from "./todo.module.css";
 
-const TaskForm = ({ taskInput, setTaskInput, setTasks }) => {
+const TaskForm = ({
+  taskInput,
+  onSave,
+  isEditMode,
+  setTaskInput,
+  setTasks,
+}) => {
   const onInput = (e) => {
     const value = e.target.value;
     setTaskInput(value);
@@ -26,13 +32,24 @@ const TaskForm = ({ taskInput, setTaskInput, setTasks }) => {
         className={styles.todoInput}
         placeholder="Write your task here..."
       />
-      <button
-        disabled={taskInput.length < 3}
-        onClick={onAdd}
-        className={styles.todoAddBtn}
-      >
-        Add
-      </button>
+      {!isEditMode && (
+        <button
+          disabled={taskInput.length < 3}
+          onClick={onAdd}
+          className={styles.todoAddBtn}
+        >
+          Add
+        </button>
+      )}
+      {isEditMode && (
+        <button
+          disabled={taskInput.length < 3}
+          onClick={onSave}
+          className={styles.saveBtn}
+        >
+          Save
+        </button>
+      )}
     </div>
   );
 };

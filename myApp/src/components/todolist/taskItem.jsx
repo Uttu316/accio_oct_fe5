@@ -1,16 +1,38 @@
 import { MdEdit as EditIcon, MdDelete as DeleteIcon } from "react-icons/md";
 import styles from "./todo.module.css";
 
-const TaskItem = ({ taskItem }) => {
-  const { task } = taskItem;
+const TaskItem = ({
+  taskItem,
+  index,
+  setTaskInput,
+  setCurrEdit,
+  isEditMode,
+  setTasks,
+}) => {
+  const { task, id } = taskItem;
+
+  const onEdit = () => {
+    const curreditTask = taskItem;
+    curreditTask.index = index;
+    setCurrEdit(curreditTask);
+    setTaskInput(task);
+  };
+
+  const onDlt = () => {
+    setTasks((currTasks) => currTasks.filter((item) => item.id !== id));
+  };
   return (
     <div className={styles.taskItem}>
       <p className={styles.taskText}>{task}</p>
       <div className={styles.todoItemActions}>
-        <button className={styles.editBtn}>
+        <button
+          disabled={isEditMode}
+          onClick={onEdit}
+          className={styles.editBtn}
+        >
           <EditIcon />
         </button>
-        <button className={styles.dltbtn}>
+        <button disabled={isEditMode} onClick={onDlt} className={styles.dltbtn}>
           <DeleteIcon />
         </button>
       </div>
