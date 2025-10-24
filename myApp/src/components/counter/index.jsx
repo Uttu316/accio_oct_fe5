@@ -22,7 +22,7 @@ const Counter = () => {
     console.log(x);
   };
 
-  console.log("Cunter called and x updated ", x);
+  console.log("Counter called and x updated ", x);
   return (
     <div className={styles.counter}>
       <h2 className={styles.count}>{x}</h2>
