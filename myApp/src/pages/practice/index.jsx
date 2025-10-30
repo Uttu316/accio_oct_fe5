@@ -1,6 +1,7 @@
 import Counter from "../../components/counter";
 import Footer from "../../components/footer";
 import AppHeader from "../../components/header";
+import StopWatch from "../../components/stopWatch";
 import TodoList from "../../components/todolist";
 import UserList from "../../components/userList";
 
@@ -11,6 +12,7 @@ const PracticePage = () => {
       <UserList />
       <Counter />
       <TodoList />
+      <StopWatch />
       <Footer />
     </div>
   );
