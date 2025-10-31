@@ -39,7 +39,7 @@ const ProductsContianer = () => {
 
   return (
     <div className={styles.productsContianer}>
-      <button onClick={() => setCount(count + 1)}>Count {count}</button>
+      {/* <button onClick={() => setCount(count + 1)}>Count {count}</button> */}
       {isLoading && <h2 className={styles.laoder}>Loading...</h2>}
 
       {isError && <h2 className={styles.error}>Something Went Wrong</h2>}
