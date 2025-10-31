@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./productsContianer.module.css";
 import { api } from "../../services";
 import ProductFilters from "./productsFilters";
@@ -8,7 +8,9 @@ const ProductsContianer = () => {
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState("loading");
 
-  const [filter, setFilter] = useState("");
+  const [count, setCount] = useState(0);
+
+  const [filter, setFilter] = useState("all"); // store selected category
 
   const isLoading = status === "loading";
   const isError = status === "error";
@@ -17,7 +19,7 @@ const ProductsContianer = () => {
   const noProducts = isDone && products.length === 0;
   const hasProducts = isDone && products.length !== 0;
 
-  const getProducts = async () => {
+  const getProducts = useCallback(async () => {
     try {
       const data = await api({
         endpoint: "/products",
@@ -29,7 +31,7 @@ const ProductsContianer = () => {
       console.log(e);
       setStatus("error");
     }
-  };
+  }, []);
 
   useEffect(() => {
     getProducts();
@@ -37,6 +39,7 @@ const ProductsContianer = () => {
 
   return (
     <div className={styles.productsContianer}>
+      <button onClick={() => setCount(count + 1)}>Count {count}</button>
       {isLoading && <h2 className={styles.laoder}>Loading...</h2>}
 
       {isError && <h2 className={styles.error}>Something Went Wrong</h2>}
@@ -46,7 +49,7 @@ const ProductsContianer = () => {
       {hasProducts && (
         <>
           <ProductFilters filter={filter} setFilter={setFilter} />
-          <ProductsList products={products} />
+          <ProductsList filter={filter} products={products} />
         </>
       )}
     </div>

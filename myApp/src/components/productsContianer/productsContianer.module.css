@@ -38,6 +38,14 @@
   background-color: #e0e0e0;
 }
 
+.selectedFilter {
+  background-color: teal;
+  color: white;
+}
+.selectedFilter:hover {
+  background-color: teal;
+}
+
 .productsList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
