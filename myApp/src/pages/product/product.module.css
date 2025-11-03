@@ -96,7 +96,8 @@
 }
 
 .addToCartBtn,
-.buyNowBtn {
+.buyNowBtn,
+.removeFromCartBtn {
   padding: 12px 24px;
   border: none;
   border-radius: 4px;
@@ -111,6 +112,10 @@
   color: #fff;
 }
 
+.removeFromCartBtn {
+  background-color: salmon;
+  color: #fff;
+}
 .addToCartBtn:hover {
   background-color: rgb(201, 133, 8);
 }
@@ -124,6 +129,9 @@
   background-color: #0056b3;
 }
 
+.removeFromCartBtn:hover {
+  background-color: rgb(208, 89, 76);
+}
 .loading,
 .error,
 .noProduct {

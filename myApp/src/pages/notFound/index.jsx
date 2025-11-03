@@ -2,11 +2,11 @@ import AppHeader from "../../components/header";
 import notFoundLogo from "../../assets/404.svg";
 import { Link } from "react-router";
 import styles from "./notFound.module.css";
+import PageWrapper from "../../components/PageWrapper";
 
 const NotFound = () => {
   return (
-    <div>
-      <AppHeader />
+    <PageWrapper>
       <div className={styles.notFoundPage}>
         <h1 className={styles.notFoundTitle}>404 - Page Not Found</h1>
         <img
@@ -26,7 +26,7 @@ const NotFound = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </PageWrapper>
   );
 };
 export default NotFound;

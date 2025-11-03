@@ -1,11 +1,11 @@
 import AppHeader from "../../components/header";
 import Footer from "../../components/footer";
 import styles from "./about.module.css";
+import PageWrapper from "../../components/PageWrapper";
 
 const About = () => {
   return (
-    <div className={styles.aboutPage}>
-      <AppHeader />
+    <PageWrapper className={styles.aboutPage}>
       <div className={styles.aboutContent}>
         <h1 className={styles.aboutTitle}>About Us</h1>
         <p className={styles.aboutText}>
@@ -23,8 +23,7 @@ const About = () => {
           forward.
         </p>
       </div>
-      <Footer />
-    </div>
+    </PageWrapper>
   );
 };
 

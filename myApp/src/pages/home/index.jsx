@@ -1,14 +1,13 @@
 import Footer from "../../components/footer";
 import AppHeader from "../../components/header";
+import PageWrapper from "../../components/PageWrapper";
 
 const Home = () => {
   return (
-    <div>
-      <AppHeader />
+    <PageWrapper>
       <h1>Hello users</h1>
       <h2>Welcome To My App</h2>
-      <Footer />
-    </div>
+    </PageWrapper>
   );
 };
 

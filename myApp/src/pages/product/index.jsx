@@ -1,12 +1,16 @@
 import { useParams } from "react-router";
 import Footer from "../../components/footer";
 import AppHeader from "../../components/header";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { api } from "../../services";
 import styles from "./product.module.css";
+import PageWrapper from "../../components/PageWrapper";
+import { CartContext } from "../../contexts/CartContext";
 
 const ProductPage = () => {
   const { productId } = useParams(); // parsing product id from URL
+
+  const { isInCart, addToCart, removeFromCart, cart } = useContext(CartContext);
 
   const [status, setStatus] = useState("loading");
   const [product, setProduct] = useState(null);
@@ -36,7 +40,7 @@ const ProductPage = () => {
     getProduct();
   }, []);
 
-  const renderStars = (rating) => {
+  const renderStars = useCallback((rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       stars.push(
@@ -49,12 +53,22 @@ const ProductPage = () => {
       );
     }
     return stars;
+  }, []);
+
+  const onAddToCart = () => {
+    addToCart(product);
   };
 
-  return (
-    <div>
-      <AppHeader />
+  const onRemoveCart = () => {
+    removeFromCart(product.id);
+  };
+  const inCart = useMemo(() => {
+    if (!product) return false;
+    return isInCart(product.id);
+  }, [cart, product]);
 
+  return (
+    <PageWrapper>
       <div className={styles.productPage}>
         {isLoading && (
           <div className={styles.loading}>Loading product details...</div>
@@ -97,16 +111,26 @@ const ProductPage = () => {
                 </span>
               </div>
               <div className={styles.ctaButtons}>
-                <button className={styles.addToCartBtn}>Add to Cart</button>
+                {!inCart && (
+                  <button onClick={onAddToCart} className={styles.addToCartBtn}>
+                    Add to Cart
+                  </button>
+                )}
+                {inCart && (
+                  <button
+                    onClick={onRemoveCart}
+                    className={styles.removeFromCartBtn}
+                  >
+                    Remove from Cart
+                  </button>
+                )}
                 <button className={styles.buyNowBtn}>Buy Now</button>
               </div>
             </div>
           </div>
         )}
       </div>
-
-      <Footer />
-    </div>
+    </PageWrapper>
   );
 };
 export default ProductPage;

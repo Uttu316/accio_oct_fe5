@@ -1,11 +1,11 @@
 import AppHeader from "../../components/header";
 import Footer from "../../components/footer";
 import styles from "./contact.module.css";
+import PageWrapper from "../../components/PageWrapper";
 
 const Contact = () => {
   return (
-    <div className={styles.contactPage}>
-      <AppHeader />
+    <PageWrapper className={styles.contactPage}>
       <div className={styles.contactContent}>
         <h1 className={styles.contactTitle}>Contact Us</h1>
         <p className={styles.contactText}>
@@ -23,8 +23,7 @@ const Contact = () => {
           <p>Address: 123 Main St, City, State 12345</p>
         </div>
       </div>
-      <Footer />
-    </div>
+    </PageWrapper>
   );
 };
 
